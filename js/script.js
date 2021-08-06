@@ -12,6 +12,7 @@ function entrarSala(){
     promisse.catch(error);
     promisse.then(enviarStatus);
     promisse.then(buscarMensagens);
+    promisse.then(recarregarMsg);
 }
 
 function error(resposta){
@@ -31,6 +32,7 @@ function enviarStatus(){
 function recarregarMsg(){
     setInterval(function(){
         buscarMensagens();
+        console.log("recarreguei")
     },3000);
 }
 
@@ -57,7 +59,6 @@ function listarMsg(resposta){
 }
    divMsg.lastChild.scrollIntoView();
    enviarStatus();
-   recarregarMsg();
 }
 
 
