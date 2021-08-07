@@ -53,7 +53,7 @@ function listarMsg(resposta){
     else if(mensagens[i].type === "status"){
         divMsg.innerHTML += ` <div class="msg entrar-sair"><div class="hora">${mensagens[i].time}</div> <div class="nome"><strong>${mensagens[i].from}</strong></div>${mensagens[i].text}</div>`
     }
-    else if(mensagens[i].type === "private_message"){
+    else if(mensagens[i].type === "private_message" && mensagens[i].to === usuario){
         divMsg.innerHTML += ` <div class="msg private"><div class="hora">${mensagens[i].time}</div> <div class="nome"><strong>${mensagens[i].from}</strong>reservadamente para ${mensagens[i].to}:</div>${mensagens[i].text}</div>`
     }
 }
@@ -64,12 +64,43 @@ function listarMsg(resposta){
 
 function enviarMsg(){
     const msg = document.querySelector(".msg-enviar").value
-    const mensagem = {
-        from: usuario,
-        to: "Todos",
-        text: msg,
-        type: "message",
+        const mensagem = {
+            from: usuario,
+            to: "Todos",
+            text: msg,
+            type: "message",
+        }
+        const promisse = axios.post("https://mock-api.bootcamp.respondeai.com.br/api/v3/uol/messages",mensagem);
+        promisse.then(buscarMensagens);
+        promisse.catch(errorServer);
+}
+
+function errorServer(){
+    window.location.reload();
+}
+
+
+function abrirLateral(){
+    const menuLat = document.querySelector(".mascara");
+    const chat = document.querySelector(".chat");
+    const promisse = axios.get("https://mock-api.bootcamp.respondeai.com.br/api/v3/uol/participants");
+    promisse.then(listarParticipants);
+    if (menuLat.classList.contains("hide")){
+        menuLat.classList.remove("hide");
     }
-    const promisse = axios.post("https://mock-api.bootcamp.respondeai.com.br/api/v3/uol/messages",mensagem);
-    promisse.then(buscarMensagens);
+    else{
+         chat.addEventListener('onClick',function(){
+             menuLat.classList.add("hide");
+         })
+    }
+}
+
+function listarParticipants(resposta){
+     let participantes = resposta.data;
+     console.log(participantes);
+     let listaPart = document.querySelector(".participants");
+    for(let i = 0;i < participantes.length;i++){
+        listaPart.innerHTML += `<li><div class="nome-icone"><ion-icon name="people"></ion-icon><span>${participantes[i].name}</span></div><ion-icon name="checkmark" class="check hide"></ion-icon></li>`
+    }
+
 }
