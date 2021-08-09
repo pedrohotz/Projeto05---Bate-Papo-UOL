@@ -1,6 +1,8 @@
 body{
     background-color: #f3f3f3;
     position: relative;
+    width: 100vw;
+    height: 100vh;
 }
 
 header{
@@ -8,7 +10,7 @@ header{
     top: 0;
     left: 0;
     z-index: 1;
-    width: 100%;
+    width: 100vw;
     background-color: #ffffff;
     height: 80px;
     display: flex;
@@ -28,24 +30,23 @@ header ion-icon{
 }
 
 .chat {
-    margin-top: 100px;
     display: flex;
     flex-direction: column;
-    margin-bottom: 80px;
     width: 100vw;
+    height: 100% - calc(160px);
+    overflow-wrap: break-word;
 }
 .msg {
     display: flex;
     justify-content: flex-start;
     height: 40px;
-    width: 100vw;
     align-items: center;
     background-color: #ffffff;
     margin: 3px;
+    overflow-wrap: break-word;
 }
 .msg.entrar-sair{
     background-color: #DCDCDC;
-    width: 100%;
 }
 .msg .hora{
     margin-right: 8px;
@@ -55,19 +56,19 @@ header ion-icon{
 }
 .msg.private{
     background-color: #FFDEDE;
-    width: 100%;
 }
 
 footer {
     position: fixed;
     bottom: 0;
     left: 0;
-    width: 100%;
+    width: 100vw;
     height: 80px;
     display: flex;
     align-items: center;
     justify-content: space-between;
     background-color: #ffffff;
+    z-index: 1;
     box-shadow: 0px -4px 6px rgba(0, 0, 0, 0.05);
 }
 footer ion-icon{
@@ -84,24 +85,28 @@ footer input{
 }
 .mascara{
     background: rgba(0, 0, 0, 0.6);
-    z-index: 3;
-    width: 100vw;
+    width: 40vw;
     height: 100vh;
+    z-index: 4;
     position: fixed;
+    top: 0;
+    left: 0;
+
 }
 
 .menu-lateral{
     font-family: 'Roboto',sans-serif;
-    width: 80vw;
+    width: 60vw;
     display: flex;
     flex-direction: column;
     height: 100vh;
     position: fixed;
     right: 0;
     top: 0;
-    font-size: 30px;
+    font-size: 20px;
     z-index: 3;
     background-color: #ffffff;
+    overflow-y: scroll;
 }
 
 .nome-icone {
@@ -115,27 +120,34 @@ footer input{
 .participants li {
     display: flex;
     justify-content: space-between;
-    padding: 20px;
+    padding: 10px;
     align-items: center;
     text-align: center;
 }
 .visibility{
     padding: 20px;
+    
 }
 .visibility span {
     margin-left: 5px;   
 }
 .visibility li {
     margin-top: 10px;
+    display: flex;
+    font-size: 20px;
 }
 .check {
     color: #28BB25;
-    font-size: 30px;
+    font-size: 20px;
+    opacity: 0;
+}
 
+.selecionado .check{
+    opacity: 1;
 }
 
 h1{
-    font-size: 20px;
+    font-size: 15px;
     font-weight: bold;
     text-align: center;
 
