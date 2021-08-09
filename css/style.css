@@ -33,9 +33,8 @@ header ion-icon{
     display: flex;
     flex-direction: column;
     width: 100vw;
-    height: 100% - calc(160px);
-    overflow-wrap: break-word;
-}
+    padding-bottom: 80px;
+} 
 .msg {
     display: flex;
     justify-content: flex-start;
@@ -43,13 +42,14 @@ header ion-icon{
     align-items: center;
     background-color: #ffffff;
     margin: 3px;
-    overflow-wrap: break-word;
+    word-break: break-word;
 }
 .msg.entrar-sair{
     background-color: #DCDCDC;
 }
 .msg .hora{
     margin-right: 8px;
+    color: #aaaaaa;
 }
 .msg .nome{
     margin-right: 8px;
@@ -83,6 +83,10 @@ footer input{
     width: 145px;
     height: 30px;
 }
+
+footer input:focus{
+    outline: none;
+}
 .mascara{
     background: rgba(0, 0, 0, 0.6);
     width: 40vw;
@@ -103,7 +107,7 @@ footer input{
     position: fixed;
     right: 0;
     top: 0;
-    font-size: 20px;
+    font-size: 15px;
     z-index: 3;
     background-color: #ffffff;
     overflow-y: scroll;
@@ -126,6 +130,8 @@ footer input{
 }
 .visibility{
     padding: 20px;
+    display: flex;
+    flex-direction: column;
     
 }
 .visibility span {
@@ -134,7 +140,9 @@ footer input{
 .visibility li {
     margin-top: 10px;
     display: flex;
-    font-size: 20px;
+    font-size: 15px;
+    display: flex;
+    justify-content: space-between;
 }
 .check {
     color: #28BB25;

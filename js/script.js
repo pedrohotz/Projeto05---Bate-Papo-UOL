@@ -52,13 +52,13 @@ function listarMsg(resposta){
     divMsg.innerHTML = "";
    for(let i = 0; i < mensagens.length;i++){
     if(mensagens[i].type === "message"){
-        divMsg.innerHTML += ` <div class="msg"><div class="hora">${mensagens[i].time} </div> <div class="nome"><strong>${mensagens[i].from} </strong>para<strong> ${mensagens[i].to}: </strong></div>${mensagens[i].text}</div>`
+        divMsg.innerHTML += ` <div class="msg"><div class="hora">(${mensagens[i].time}) </div> <div class="nome"><strong>${mensagens[i].from} </strong>para<strong> ${mensagens[i].to}: </strong></div>${mensagens[i].text}</div>`
     }
     else if(mensagens[i].type === "status"){
-        divMsg.innerHTML += ` <div class="msg entrar-sair"><div class="hora">${mensagens[i].time}</div> <div class="nome"><strong>${mensagens[i].from}</strong></div>${mensagens[i].text}</div>`
+        divMsg.innerHTML += ` <div class="msg entrar-sair"><div class="hora">(${mensagens[i].time})</div> <div class="nome"><strong>${mensagens[i].from}</strong></div>${mensagens[i].text}</div>`
     }
     else if(mensagens[i].type === "private_message" && mensagens[i].to === usuario || mensagens[i].from === usuario){
-        divMsg.innerHTML += ` <div class="msg private"><div class="hora">${mensagens[i].time}</div> <div class="nome"><strong>${mensagens[i].from} </strong>reservadamente para ${mensagens[i].to}:</div>${mensagens[i].text}</div>`
+        divMsg.innerHTML += ` <div class="msg private"><div class="hora">(${mensagens[i].time})</div> <div class="nome"><strong>${mensagens[i].from} </strong>reservadamente para <strong>${mensagens[i].to}:</strong></div>${mensagens[i].text}</div>`
     }
 }
    divMsg.lastChild.scrollIntoView();
